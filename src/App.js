@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Nav/>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/hackernews">
           <Redirect to="/search" />
         </Route>
         <Route exact path="/search">
