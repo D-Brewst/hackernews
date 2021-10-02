@@ -3,7 +3,7 @@ import React from 'react';
 const History = ({history}) => {
     return (
         <div>
-            <h5>Your Search History:</h5>
+            <h3>Your Search History:</h3>
             <ul>
                 {history.length ? history.map((term) => (
                     <li>{term}</li>
