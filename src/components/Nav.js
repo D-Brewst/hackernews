@@ -6,10 +6,10 @@ const Nav = () => {
         <nav className="nav">
             <ul>
                 <li className="nav__link">
-                    <Link to="/hackernews/search">Search</Link>
+                    <Link to="/search">Search</Link>
                 </li>
                 <li className="nav__link">
-                    <Link to="/hackernews/history">History</Link>
+                    <Link to="/history">History</Link>
                 </li>
             </ul>
         </nav>

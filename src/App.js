@@ -18,10 +18,7 @@ function App() {
     <Router>
       <Nav/>
       <Switch>
-        <Route exact path="/hackernews/">
-          <Redirect to="/hackernews/search" />
-        </Route>
-        <Route exact path="/hackernews/search">
+        <Route exact path="/search">
           <Search
             results={results}
             setResults={setResults}
@@ -29,8 +26,11 @@ function App() {
             setHistory={setHistory}
           />
         </Route>
-        <Route exact path="/hackernews/history">
+        <Route exact path="/history">
           <History history={history}/>
+        </Route>
+        <Route exact path="*">
+          <Redirect to="/search" />
         </Route>
       </Switch>
     </Router>
