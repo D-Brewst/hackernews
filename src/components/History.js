@@ -5,8 +5,8 @@ const History = ({history}) => {
         <div>
             <h3>Your Search History:</h3>
             <ul>
-                {history.length ? history.map((term) => (
-                    <li>{term}</li>
+                {history.length ? history.map((term, index) => (
+                    <li key={index}>{term}</li>
                 )) : <p>You have not made a search during this session.</p>}
             </ul>
         </div>

@@ -11,7 +11,6 @@ import {
 import './styles.css';
 
 function App() {
-  const [results, setResults] = useState([]);
   const [history, setHistory] = useState([]);
 
   return (
@@ -20,8 +19,6 @@ function App() {
       <Switch>
         <Route exact path="/search">
           <Search
-            results={results}
-            setResults={setResults}
             history={history}
             setHistory={setHistory}
           />

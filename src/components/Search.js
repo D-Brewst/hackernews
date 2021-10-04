@@ -1,17 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { searchHnApi } from '../utils/hnapi.js';
 
-const Search = ({results, setResults, history, setHistory}) => {
+const Search = ({history, setHistory}) => {
+    const [results, setResults] = useState([]);
 
     const searchRef = useRef();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const term = searchRef.current.value;
+        const term = searchRef.current.value.trim();
         const data = await searchHnApi(term);
         setResults(data.hits);
-        const updatedHistory = [...history, term];
-        setHistory(updatedHistory);
+        if(term){
+            const updatedHistory = [...history, term];
+            setHistory(updatedHistory);
+        }      
     }
 
     return (
@@ -28,11 +31,12 @@ const Search = ({results, setResults, history, setHistory}) => {
                     <button className="login__btn" type="submit">Submit</button>
                 </div>
             </form>
-            <div>
+            <p style={{display: searchRef.current && searchRef.current.value.trim() === "" ? 'block' : 'none' }}>Please enter a search term.</p>
+            <div style={{display: searchRef.current && searchRef.current.value.trim() === "" ? 'none' : 'block' }}>
                 <ul>
-                    {results.length ? (
+                    {results ? (
                         results.map((article) => (
-                            <li key={article.objectID}>
+                            <li style={{display: article.url && article.title ? 'block' : 'none' }} key={article.objectID}>
                                 <a href={article.url}>{article.title}</a> 
                             </li>
                         ))
